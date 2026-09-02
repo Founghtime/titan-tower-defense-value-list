@@ -526,6 +526,7 @@ body{
   .stability-rising{ border-color: rgba(0,188,212,.30); background: rgba(0,188,212,.10); }
   .stability-dropping{ border-color: rgba(244,67,54,.32); background: rgba(244,67,54,.11); }
   .stability-fluctuating{ border-color: rgba(255,152,0,.30); background: rgba(255,152,0,.10); }
+  .stability-overpaid{ border-color: rgba(2, 48, 32,.30); background: rgba(2, 48, 32.10); }
   #trade-page .stats-chips .item-price{ font-size: inherit; margin: 0; }
 
 
@@ -2172,7 +2173,7 @@ font-size: 0.95rem;
         { name: "Slotman (highroller)", minPrice: 3420, maxPrice: 3420, demand: 5, stability: "Stable", imageUrl: "https://i.postimg.cc/pTSZf6L5/transparent-Photoroom-(18).png" },
         { name: "Energy TV Woman (scythe)", minPrice: 1125, maxPrice: 1125, demand: 6, stability: "Stable", imageUrl: "https://i.postimg.cc/x1WmCwKV/transparent-Photoroom-(17).png" },
         { name: "Titan Grill", minPrice: 4050, maxPrice: 4050, demand: 5, stability: "Fluctuating", imageUrl: "https://i.ibb.co/dszQBh36/Titan-Grill.png" },
-        { name: "Titan Grill (full gas)", minPrice: 3600, maxPrice: 3600, demand: 7, stability: "Fluctuating", imageUrl: "https://i.ibb.co/nN78WWYg/transparent-Photoroom-2026-01-23-T151103-818.png" },
+        { name: "Titan Grill (full gas)", minPrice: 3600, maxPrice: 3600, demand: 7, stability: "Overpaid", imageUrl: "https://i.ibb.co/nN78WWYg/transparent-Photoroom-2026-01-23-T151103-818.png" },
         { name: "Enhanced Energy TV", minPrice: 945, maxPrice: 945, demand: 5, stability: "Stable", imageUrl: "https://i.ibb.co/x8tDNXSM/transparent-Photoroom-36.png" },
         { name: "Energy TV", minPrice: 900, maxPrice: 900, demand: 7, stability: "Stable", imageUrl: "https://i.ibb.co/x8tDNXSM/transparent-Photoroom-36.png" },
         { name: "Titan Drill", minPrice: 360, maxPrice: 360, demand: 4, stability: "Stable", imageUrl: "https://i.postimg.cc/TwyRNKfN/transparent-Photoroom-(21).png" },
@@ -2353,10 +2354,11 @@ font-size: 0.95rem;
     if (v === 'rising') return 'Rising';
     if (v === 'dropping') return 'Dropping';
     if (v === 'fluctuating') return 'Fluctuating';
+    if (v === 'overpaid') return 'Overpaid';
     return 'Stable';
   }
   function stabilityClass(value){
-    return normalizeStability(value).toLowerCase(); // stable | rising | dropping | fluctuating  
+    return normalizeStability(value).toLowerCase(); // stable | rising | dropping | fluctuating | overpaid 
   }
 
   function clampNumber(n, min, max){
@@ -2397,6 +2399,7 @@ font-size: 0.95rem;
     if (s === 'Rising') return [0, 230, 118];          // green
     if (s === 'Dropping') return [255, 92, 92];        // red
     if (s === 'Fluctuating') return [255, 193, 7];     // amber
+    if (s === 'Overpaid') return [2, 48, 32];          // dark green
     return [120, 200, 255];                            // Stable: blue/cyan
   }
   function stabilityChipStyle(status){
